@@ -1,3 +1,9 @@
+/**
+ * A Minesweeper square.
+ * 
+ * @export
+ * @class Square
+ */
 export class Square
 {
 	// Whether or not the square has a mine or not.
@@ -55,9 +61,21 @@ export class Square
 	 */
 	public draw(): void
 	{
-		// Change the filling color depending on the square.
+		// Clear the rectangle first.
+		this.ctx.clearRect(this.cor[0], this.cor[1], this.side, this.side);
+
+		/*
+			Change the filling color depending on the square.
+			Use the fillStyle property.
+			https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/fillStyle
+		*/
+		this.ctx.strokeStyle = 'black';
+		this.ctx.fillStyle = 'gray';
 
 		// Fill in a rectangle.
-		this.ctx.strokeRect(this.cor[0], this.cor[1], this.side, this.side);
+		// http://www.html5canvastutorials.com/tutorials/html5-canvas-rectangles/
+		this.ctx.rect(this.cor[0], this.cor[1], this.side, this.side);
+		this.ctx.fill();
+		this.ctx.stroke();
 	}
 }

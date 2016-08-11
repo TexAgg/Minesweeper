@@ -1,5 +1,11 @@
 import {Square} from "./Square";
 
+/**
+ * Class for the game.
+ * 
+ * @export
+ * @class Minesweeper
+ */
 export class Minesweeper
 {
 	// The squares.
@@ -56,7 +62,9 @@ export class Minesweeper
 		// http://javascriptplayground.com/blog/2012/04/javascript-variable-scope-this/
 		let _this = this;
 		// Add event listeners.
-		this.canvas.addEventListener('click', this.on_board_left_click, false);
+		this.canvas.addEventListener('click', function(e: Event){
+			_this.on_board_left_click();
+		}, false);
 		// http://stackoverflow.com/questions/4235426/how-can-i-capture-the-right-click-event-in-javascript
 		this.canvas.addEventListener('contextmenu', function(e: Event){
 			// http://stackoverflow.com/a/4236294/5415895
@@ -94,5 +102,19 @@ export class Minesweeper
 	private place_numbers(): void
 	{
 
+	}
+
+	/**
+	 * Find which square the mouse is in upon an event.
+	 * http://www.html5canvastutorials.com/advanced/html5-canvas-mouse-coordinates/
+	 * 
+	 * @private
+	 * @param {Event} e
+	 * @returns {[number, number]}
+	 */
+	private get_mouse_pos(e: Event): [number, number]
+	{
+		// Temporary return to prevent errors.
+		return [0,0];
 	}
 }
