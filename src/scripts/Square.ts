@@ -8,13 +8,20 @@ export class Square
 	public marked: boolean;
 	// The number on the square.
 	public value: number;
-	// Location of the top-left corner of the square.
 
+	// Location of the top-left corner of the square.
 	private cor: [number, number];
 	// Length of each side in pixels.
 	private side: number;
 	private ctx: CanvasRenderingContext2D;
 
+	/**
+	 * Creates an instance of Square.
+	 * 
+	 * @param {CanvasRenderingContext2D} ctx
+	 * @param {[number, number]} point
+	 * @param {number} side
+	 */
 	constructor(ctx: CanvasRenderingContext2D, point: [number, number], side: number)
 	{
 		this.ctx = ctx;

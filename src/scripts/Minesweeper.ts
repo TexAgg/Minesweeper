@@ -2,12 +2,19 @@ import {Square} from "./Square";
 
 export class Minesweeper
 {
+	// The squares.
 	private board: Array< Array<Square> >;
 	private canvas: HTMLCanvasElement;
+	// Number of mines.
 	private num_mines: number;
 	// Square side of 40 pixels.
 	private SQUARE_SIDE = 40;
 
+	/**
+	 * Creates an instance of Minesweeper.
+	 * 
+	 * @param {HTMLCanvasElement} canvas
+	 */
 	constructor(canvas: HTMLCanvasElement)
 	{
 		this.canvas = canvas;
@@ -17,6 +24,11 @@ export class Minesweeper
 		this.add_listeners();
 	}
 
+	/**
+	 * Create the squares and push them into the array.
+	 * 
+	 * @private
+	 */
 	private create_board(): void
 	{
 		// http://stackoverflow.com/questions/30144580/typescript-multidimensional-array-initialization
@@ -34,6 +46,11 @@ export class Minesweeper
 		}
 	}
 
+	/**
+	 * Add the event listeners for right and left clicking.
+	 * 
+	 * @private
+	 */
 	private add_listeners(): void
 	{
 		// http://javascriptplayground.com/blog/2012/04/javascript-variable-scope-this/
