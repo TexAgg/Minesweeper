@@ -1,0 +1,7 @@
+# Composer files.
+/vendor
+
+# Compiled typescript files.
+/src/scripts/build/
+# Bundle
+/src/scripts/bundle/

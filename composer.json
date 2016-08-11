@@ -1,0 +1,14 @@
+{
+    "name": "matt/minesweeper",
+    "description": "Minesweeper",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Matt Gaikema",
+            "email": "mgaikema1@gmail.com"
+        }
+    ],
+    "require": {
+        "nategood/httpful": "^0.2.20"
+    }
+}
