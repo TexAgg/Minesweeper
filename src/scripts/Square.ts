@@ -43,6 +43,8 @@ export class Square
 	/**
 	 * Lets you know whether or not a point is in the square.
 	 * Does not count the edge as in.
+	 * I'm not sure this function is needed,
+	 * since Minesweeper has functions to return which square was clicked.
 	 * 
 	 * @param {[number, number]} point
 	 * @returns {boolean}
