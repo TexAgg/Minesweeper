@@ -19,6 +19,9 @@ to fix it.
 NodeJS must be installed,
 and the modules [browserify](http://browserify.org/) and [typescript](https://www.typescriptlang.org/)
 must be globally installed.
+For people familar with C++, 
+Typescript acts as the compiler, taking `*.ts` files and compiling them into pure Javascript files, 
+and Browserify acts as the linker, combining all the Javascript files into one file ready for the browser.
 
 #### Linux
 In the root of the project,

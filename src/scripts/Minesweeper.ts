@@ -16,19 +16,23 @@ export class Minesweeper
 	private num_mines: number;
 	// Square side of 40 pixels.
 	private SQUARE_SIDE = 40;
+	// The number of squares on each side.
+	private NUM_SQUARES = 15;
 
 	/**
 	 * Creates an instance of Minesweeper.
 	 * 
 	 * @param {HTMLCanvasElement} canvas
 	 */
-	constructor(canvas: HTMLCanvasElement)
+	constructor(canvas: HTMLCanvasElement, num_mines: number)
 	{
 		this.canvas = canvas;
-		this.board = [];
+		this.num_mines = num_mines;
 
 		this.create_board();
 		this.add_listeners();
+		this.place_mines();
+		this.place_numbers();
 	}
 
 	/**
@@ -38,13 +42,16 @@ export class Minesweeper
 	 */
 	private create_board(): void
 	{
+		// Initialize the board as an empty Array.
+		this.board = [];
+		
 		// http://stackoverflow.com/questions/30144580/typescript-multidimensional-array-initialization
-		for (var i = 0; i < 15; i++)
+		for (var i = 0; i < this.NUM_SQUARES; i++)
 		{
 			// Create empty Array.
 			this.board[i] = [];
 			// Fill up the Array.
-			for (var j = 0; j < 15; j++)
+			for (var j = 0; j < this.NUM_SQUARES; j++)
 			{
 				this.board[i][j] = new Square(
 					this.canvas.getContext('2d'),
@@ -90,7 +97,10 @@ export class Minesweeper
 	private on_board_left_click(e: Event): void
 	{
 		let pt = this.get_mouse_pos(<MouseEvent>e);
-		console.log(this.get_which_square(pt));
+		let index = this.get_which_square(pt);
+		this.board[index[0]][index[1]].square_clicked();
+
+		console.log(index);
 	}
 
 	/**
@@ -101,7 +111,10 @@ export class Minesweeper
 	private on_board_right_click(e: Event): void
 	{
 		let pt: [number, number] = this.get_mouse_pos(<MouseEvent>e);
-		console.log(this.get_which_square(pt));
+		let index = this.get_which_square(pt);
+		this.board[index[0]][index[1]].square_marked();
+
+		console.log(index);
 	}
 
 	/**
@@ -135,8 +148,8 @@ export class Minesweeper
 	private get_mouse_pos(e: MouseEvent): [number, number]
 	{
 		let rect = this.canvas.getBoundingClientRect();
-
 		let point: [number, number] = [0,0];
+
 		point[0] = Math.round((e.clientX - rect.left) / (rect.right - rect.left) * this.canvas.width);
 		point[1] = Math.round((e.clientY - rect.top) / (rect.bottom - rect.top) * this.canvas.height);
 		
@@ -159,5 +172,15 @@ export class Minesweeper
 		
 		// Temporary return statement to prevent errors.
 		return indeces;
+	}
+
+	/**
+	 * Return the number of remaining mines.
+	 * 
+	 * @returns {number}
+	 */
+	public get_remaining_mines(): number
+	{
+		return this.num_mines;
 	}
 }

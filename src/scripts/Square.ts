@@ -46,6 +46,7 @@ export class Square
 	 * I'm not sure this function is needed,
 	 * since Minesweeper has functions to return which square was clicked.
 	 * 
+	 * @deprecated
 	 * @param {[number, number]} point
 	 * @returns {boolean}
 	 */
@@ -79,5 +80,61 @@ export class Square
 		this.ctx.rect(this.cor[0], this.cor[1], this.side, this.side);
 		this.ctx.fill();
 		this.ctx.stroke();
+
+		if (this.marked)
+		{
+			// http://stackoverflow.com/questions/10791610/javascript-html5-using-image-to-fill-canvas
+			let img = new Image();
+			img.src = '../media/flag.png';
+			this.ctx.drawImage(img, this.cor[0], this.cor[1]);
+		}
+	}
+
+	/**
+	 * Called when a square is left-clicked.
+	 */
+	public square_clicked(): void
+	{
+		// If it's already been revealed, just return.
+		if (this.revealed)
+			return;
+		
+		// Open the square if there is no mine there.
+		if (!this.state)
+		{
+			this.open_square();
+		}
+		else
+		{
+			if (!this.marked)
+			{
+				// Game over!
+			}
+		}
+
+		this.draw();
+	}
+
+	public square_marked(): void
+	{
+		if (this.revealed)
+			return;
+		
+		if (!this.marked)
+			this.marked = true;
+		else 
+			this.marked = false;
+
+		this.draw();
+	}
+
+	private open_square(): void
+	{
+		if (!this.marked && !this.revealed)
+		{
+			this.revealed = true;
+		}
+
+		this.draw();
 	}
 }
