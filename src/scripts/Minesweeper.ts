@@ -213,7 +213,134 @@ export class Minesweeper
 	{
 		let neighbors = [];
 
-		// Finish this.
+		// Top.
+		if (index[1] == 0)
+		{
+			// Top left: three surrounding squares.
+			if (index[0] == 0)
+			{
+				// The square right below it.
+				neighbors.push([index[0], index[1] + 1]);
+				// The square southeast diagonal to it.
+				neighbors.push([index[0] + 1, index[1] + 1]);
+				// The square on the right.
+				neighbors.push(index[0] + 1, index[1]);
+			}
+			// Top right: three surrounding squares.
+			else if (index[0] == this.NUM_SQUARES -1)
+			{
+				// The square right below it.
+				neighbors.push([index[0], index[1] + 1]);
+				// The square southwest diagonal to it.
+				neighbors.push([index[0] - 1, index[1] + 1]);
+				// The square on the left.
+				neighbors.push([index[0] - 1, index[1]]);
+			}
+			// Top middle: five surrounding squares.
+			else
+			{
+				// The square right below.
+				neighbors.push([index[0], index[1] + 1]);
+				// On the right.
+				neighbors.push([index[0] + 1, index[1]]);
+				// On the left.
+				neighbors.push([index[0] - 1, index[1]]);
+				// Southeast diagonal.
+				neighbors.push([index[0] + 1, index[1] + 1]);
+				// Southwest diagonal.
+				neighbors.push([index[0] - 1, index[1] + 1]);
+			}
+		}
+		// Bottom.
+		else if (index[1] == this.NUM_SQUARES - 1)
+		{
+			// Bottom left: three surrounding squares.
+			if (index[0] == 0)
+			{
+				// Right.
+				neighbors.push([index[0] + 1, index[1]]);
+				// Above.
+				neighbors.push([index[0], index[1] - 1]);
+				// Northwest.
+				neighbors.push([index[0] + 1, index[1] - 1]);
+			}
+			// Bottom right: three surrounding squares.
+			else if (index[0] == this.NUM_SQUARES -1)
+			{
+				// Left.
+				neighbors.push([index[0] - 1, index[1]]);
+				// Above.
+				neighbors.push([index[0], index[1] - 1]);
+				// Northeast.
+				neighbors.push([index[0] - 1, index[1] - 1]);		
+			}
+			// Bottom middle: five surrounding squares.
+			else
+			{
+				// Left.
+				neighbors.push([index[0] - 1, index[1]]);
+				// Right.
+				neighbors.push([index[0] + 1, index[1]]);
+				// Above.
+				neighbors.push([index[0], index[1] - 1]);
+				// Northwest.
+				neighbors.push([index[0] + 1, index[1] - 1]);
+				// Northeast.
+				neighbors.push([index[0] - 1, index[1] - 1]);												
+			}
+		}
+		// Somewhere in the middle,
+		else 
+		{
+			// Middle left: five surrounding squares.
+			if (index[0] == 0)
+			{
+				// Right.
+				neighbors.push([index[0] + 1, index[1]]);
+				// Above.
+				neighbors.push([index[0], index[1] - 1]);
+				// Below.
+				neighbors.push([index[0], index[1] + 1]);
+				// Southeast.
+				neighbors.push([index[0] + 1, index[0] + 1]);
+				// Northeast.
+				neighbors.push([index[0] + 1, index[1] - 1])
+			}
+			// Middle right: five surrounding squares.
+			else if (index[0] == this.NUM_SQUARES -1)
+			{
+				// Left.
+				neighbors.push([index[0] - 1, index[1]]);				
+				// Above.
+				neighbors.push([index[0], index[1] - 1]);
+				// Below.
+				neighbors.push([index[0], index[1] + 1]);
+				// Northwest.
+				neighbors.push([index[0] - 1, index[1] - 1]);
+				// Southwest.
+				neighbors.push([index[0] - 1, index[1] + 1]);												
+			}
+			// Middle middle: eight surrounding squares.
+			else
+			{
+				// Left.
+				neighbors.push([index[0] - 1, index[1]]);
+				// Right.
+				neighbors.push([index[0] + 1, index[1]]);
+				// Above.
+				neighbors.push([index[0], index[1] - 1]);
+				// Below.
+				neighbors.push([index[0], index[1] + 1]);				
+				// Northwest.
+				neighbors.push([index[0] + 1, index[1] - 1]);
+				// Northeast.
+				neighbors.push([index[0] - 1, index[1] - 1]);
+				// Southwest.
+				neighbors.push([index[0] - 1, index[1] + 1]);
+				// Southeast.
+				neighbors.push([index[0] + 1, index[0] + 1]);							
+			}
+		}
 
 		return neighbors;
 	}

@@ -7,7 +7,8 @@
 build_dir="src/scripts/build"
 # An array of all the compiled typescript files to be compiled again into one single javascript file for the browser.
 build_files=($build_dir/main.js $build_dir/Minesweeper.js $build_dir/Square.js)
+bundle_file="src/scripts/bundle/bundle.js"
 
 # Compile typescript files.
 tsc
-browserify ${build_files[*]} -o src/scripts/bundle/bundle.js
+browserify ${build_files[*]} -o $bundle_file
