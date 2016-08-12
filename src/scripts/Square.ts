@@ -61,6 +61,8 @@ export class Square
 
 	/**
 	 * Draw the square.
+	 * In many ways this is the most important function.
+	 * Often, if there is a bug, it is in here.
 	 */
 	public draw(): void
 	{
@@ -73,18 +75,27 @@ export class Square
 			https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/fillStyle
 		*/
 		this.ctx.strokeStyle = 'black';
-		this.ctx.fillStyle = 'gray';
+		if (this.revealed)
+		{
+			// http://stackoverflow.com/questions/7460927/canvas-fillstyle-in-interval-with-transparent-opacity
+			this.ctx.fillStyle = 'rgba(0, 0, 0, 0.2)';
+		}
+		else
+			this.ctx.fillStyle = 'gray';
 
 		// Fill in a rectangle.
 		// http://www.html5canvastutorials.com/tutorials/html5-canvas-rectangles/
+		// Without beginPath it doesn't work.
+		this.ctx.beginPath();
 		this.ctx.rect(this.cor[0], this.cor[1], this.side, this.side);
 		this.ctx.fill();
 		this.ctx.stroke();
 
 		if (this.marked)
 		{
-			// http://stackoverflow.com/questions/10791610/javascript-html5-using-image-to-fill-canvas
+			// Image for the square.
 			let img = new Image();
+			// http://stackoverflow.com/questions/10791610/javascript-html5-using-image-to-fill-canvas
 			img.src = '../media/flag.png';
 			this.ctx.drawImage(img, this.cor[0], this.cor[1]);
 		}
@@ -109,6 +120,7 @@ export class Square
 			if (!this.marked)
 			{
 				// Game over!
+				alert("You lose!");
 			}
 		}
 

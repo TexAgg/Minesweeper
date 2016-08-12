@@ -23,16 +23,31 @@ export class Minesweeper
 	 * Creates an instance of Minesweeper.
 	 * 
 	 * @param {HTMLCanvasElement} canvas
+	 * @param {number} num_mines
 	 */
 	constructor(canvas: HTMLCanvasElement, num_mines: number)
 	{
-		this.canvas = canvas;
-		this.num_mines = num_mines;
+		// http://stackoverflow.com/questions/23790509/proper-use-of-errors-in-typescript
+		try {
+			// We can't have more mines than squares.
+			if (num_mines > Math.pow(this.NUM_SQUARES,2))
+				throw new RangeError();
+			
+			this.canvas = canvas;
+			this.num_mines = num_mines;
 
-		this.create_board();
-		this.add_listeners();
-		this.place_mines();
-		this.place_numbers();
+			this.create_board();
+			this.add_listeners();
+			this.place_mines();
+			this.place_numbers();
+		}
+		catch(e)
+		{
+			if (e instanceof RangeError)
+			{
+				console.error('Out of range');
+			}
+		}
 	}
 
 	/**
@@ -100,7 +115,7 @@ export class Minesweeper
 		let index = this.get_which_square(pt);
 		this.board[index[0]][index[1]].square_clicked();
 
-		console.log(index);
+		//console.log(index);
 	}
 
 	/**
@@ -114,7 +129,7 @@ export class Minesweeper
 		let index = this.get_which_square(pt);
 		this.board[index[0]][index[1]].square_marked();
 
-		console.log(index);
+		//console.log(index);
 	}
 
 	/**
@@ -124,7 +139,19 @@ export class Minesweeper
 	 */
 	private place_mines(): void
 	{
+		let counter: number = this.num_mines;
+		while (counter > 0)
+		{
+			let rando: number = Math.floor(Math.random() * this.NUM_SQUARES * this.NUM_SQUARES -1);
+			let row: number = Math.floor(rando / this.NUM_SQUARES);
+			let col: number = rando % this.NUM_SQUARES;
 
+			if (!this.board[row][col].state)
+			{
+				this.board[row][col].state = true;
+				counter--;
+			}
+		}
 	}
 
 	/**
@@ -166,12 +193,29 @@ export class Minesweeper
 	 */
 	private get_which_square(pt: [number, number]): [number, number]
 	{
-		let indeces: [number, number] = [0,0];
-		indeces[0] = Math.floor(pt[0] / this.SQUARE_SIDE);
-		indeces[1] = Math.floor(pt[1] / this.SQUARE_SIDE);
+		let indices: [number, number] = [0,0];
+
+		indices[0] = Math.floor(pt[0] / this.SQUARE_SIDE);
+		indices[1] = Math.floor(pt[1] / this.SQUARE_SIDE);
 		
 		// Temporary return statement to prevent errors.
-		return indeces;
+		return indices;
+	}
+
+	/**
+	 * Given the indices of a square, 
+	 * return its neighbor indices.
+	 * 
+	 * @param {[number, number]} index
+	 * @returns {Array<[number, number]>}
+	 */
+	public get_neighbors(index: [number, number]): Array<[number, number]>
+	{
+		let neighbors = [];
+
+		// Finish this.
+
+		return neighbors;
 	}
 
 	/**
