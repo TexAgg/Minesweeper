@@ -175,7 +175,7 @@ export class Minesweeper
 						square_num++;
 				}
 				this.board[i][j].value = square_num;
-				this.board[i][j].draw();
+				//this.board[i][j].draw();
 			}
 		}
 	}
@@ -358,6 +358,23 @@ export class Minesweeper
 		}
 
 		return neighbors;
+	}
+
+	/**
+	 * If a square of value 0 is opened,
+	 * open its neighbors automatically.
+	 * 
+	 * @private
+	 * @param {[number, number]} index
+	 */
+	private open_neighbors(index: [number, number]): void
+	{
+		let neighbors: Array<[number, number]> = this.get_neighbors(index);
+
+		for (let i = 0; i < neighbors.length; i++)
+		{
+			let temp: [number, number] = neighbors[i];
+		}
 	}
 
 	/**

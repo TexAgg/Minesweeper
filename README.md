@@ -1,4 +1,6 @@
 # Minesweeper
+In order to get more familiar with Typescript,
+I decided to recreate one of my favorite games.
 
 ---
 
