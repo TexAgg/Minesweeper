@@ -61,12 +61,12 @@ export class Minesweeper
 		this.board = [];
 		
 		// http://stackoverflow.com/questions/30144580/typescript-multidimensional-array-initialization
-		for (var i = 0; i < this.NUM_SQUARES; i++)
+		for (let i = 0; i < this.NUM_SQUARES; i++)
 		{
 			// Create empty Array.
 			this.board[i] = [];
 			// Fill up the Array.
-			for (var j = 0; j < this.NUM_SQUARES; j++)
+			for (let j = 0; j < this.NUM_SQUARES; j++)
 			{
 				this.board[i][j] = new Square(
 					this.canvas.getContext('2d'),
@@ -113,9 +113,8 @@ export class Minesweeper
 	{
 		let pt = this.get_mouse_pos(<MouseEvent>e);
 		let index = this.get_which_square(pt);
-		this.board[index[0]][index[1]].square_clicked();
 
-		//console.log(index);
+		this.board[index[0]][index[1]].square_clicked();
 	}
 
 	/**
@@ -127,9 +126,8 @@ export class Minesweeper
 	{
 		let pt: [number, number] = this.get_mouse_pos(<MouseEvent>e);
 		let index = this.get_which_square(pt);
-		this.board[index[0]][index[1]].square_marked();
 
-		//console.log(index);
+		this.board[index[0]][index[1]].square_marked();
 	}
 
 	/**
@@ -140,6 +138,7 @@ export class Minesweeper
 	private place_mines(): void
 	{
 		let counter: number = this.num_mines;
+
 		while (counter > 0)
 		{
 			let rando: number = Math.floor(Math.random() * this.NUM_SQUARES * this.NUM_SQUARES -1);
@@ -161,7 +160,24 @@ export class Minesweeper
 	 */
 	private place_numbers(): void
 	{
+		for (let i = 0; i < this.NUM_SQUARES; i++)
+		{
+			for (let j = 0; j < this.NUM_SQUARES; j++)
+			{
+				let neighbors: Array<[number, number]> = this.get_neighbors([i,j]);
+				let square_num: number = 0;
 
+				for (let k = 0; k < neighbors.length; k++)
+				{
+					let temp: [number, number] = neighbors[k];
+
+					if (this.board[temp[0]][temp[1]].state)
+						square_num++;
+				}
+				this.board[i][j].value = square_num;
+				this.board[i][j].draw();
+			}
+		}
 	}
 
 	/**
@@ -198,7 +214,6 @@ export class Minesweeper
 		indices[0] = Math.floor(pt[0] / this.SQUARE_SIDE);
 		indices[1] = Math.floor(pt[1] / this.SQUARE_SIDE);
 		
-		// Temporary return statement to prevent errors.
 		return indices;
 	}
 
@@ -224,7 +239,7 @@ export class Minesweeper
 				// The square southeast diagonal to it.
 				neighbors.push([index[0] + 1, index[1] + 1]);
 				// The square on the right.
-				neighbors.push(index[0] + 1, index[1]);
+				neighbors.push([index[0] + 1, index[1]]);
 			}
 			// Top right: three surrounding squares.
 			else if (index[0] == this.NUM_SQUARES -1)

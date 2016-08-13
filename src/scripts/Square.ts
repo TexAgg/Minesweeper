@@ -36,6 +36,7 @@ export class Square
 
 		this.revealed = false;
 		this.marked = false;
+		this.value = 0;
 
 		this.draw();
 	}
@@ -68,6 +69,17 @@ export class Square
 	{
 		// Clear the rectangle first.
 		this.ctx.clearRect(this.cor[0], this.cor[1], this.side, this.side);
+
+		// Draw the numbers.
+		if (this.value != 0)
+		{
+			// https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Drawing_text
+			this.ctx.font = "30px Arial";
+			this.ctx.fillStyle = 'black';
+			this.ctx.textAlign = 'left';
+			this.ctx.textBaseline = 'hanging';
+			this.ctx.fillText(String(this.value), this.cor[0], this.cor[1]);
+		}
 
 		/*
 			Change the filling color depending on the square.
