@@ -139,6 +139,11 @@ export class Square
 		this.draw();
 	}
 
+	/**
+	 * Mark the current square.
+	 * 
+	 * @returns {void}
+	 */
 	public square_marked(): void
 	{
 		if (this.revealed)
@@ -152,7 +157,10 @@ export class Square
 		this.draw();
 	}
 
-	private open_square(): void
+	/**
+	 * Open the square.
+	 */
+	public open_square(): void
 	{
 		if (!this.marked && !this.revealed)
 		{

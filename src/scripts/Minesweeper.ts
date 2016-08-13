@@ -115,6 +115,10 @@ export class Minesweeper
 		let index = this.get_which_square(pt);
 
 		this.board[index[0]][index[1]].square_clicked();
+		if (this.board[index[0]][index[1]].value == 0)
+		{
+			this.open_neighbors(index);
+		}
 	}
 
 	/**
@@ -234,11 +238,11 @@ export class Minesweeper
 			// Top left: three surrounding squares.
 			if (index[0] == 0)
 			{
-				// The square right below it.
+				// Below.
 				neighbors.push([index[0], index[1] + 1]);
-				// The square southeast diagonal to it.
+				// Southeast.
 				neighbors.push([index[0] + 1, index[1] + 1]);
-				// The square on the right.
+				// Right.
 				neighbors.push([index[0] + 1, index[1]]);
 			}
 			// Top right: three surrounding squares.
@@ -254,15 +258,15 @@ export class Minesweeper
 			// Top middle: five surrounding squares.
 			else
 			{
-				// The square right below.
+				// Below.
 				neighbors.push([index[0], index[1] + 1]);
-				// On the right.
+				// Right.
 				neighbors.push([index[0] + 1, index[1]]);
-				// On the left.
+				// Left.
 				neighbors.push([index[0] - 1, index[1]]);
-				// Southeast diagonal.
+				// Southeast.
 				neighbors.push([index[0] + 1, index[1] + 1]);
-				// Southwest diagonal.
+				// Southwest.
 				neighbors.push([index[0] - 1, index[1] + 1]);
 			}
 		}
@@ -276,7 +280,7 @@ export class Minesweeper
 				neighbors.push([index[0] + 1, index[1]]);
 				// Above.
 				neighbors.push([index[0], index[1] - 1]);
-				// Northwest.
+				// Northeast.
 				neighbors.push([index[0] + 1, index[1] - 1]);
 			}
 			// Bottom right: three surrounding squares.
@@ -286,7 +290,7 @@ export class Minesweeper
 				neighbors.push([index[0] - 1, index[1]]);
 				// Above.
 				neighbors.push([index[0], index[1] - 1]);
-				// Northeast.
+				// Northwest.
 				neighbors.push([index[0] - 1, index[1] - 1]);		
 			}
 			// Bottom middle: five surrounding squares.
@@ -299,9 +303,9 @@ export class Minesweeper
 				// Above.
 				neighbors.push([index[0], index[1] - 1]);
 				// Northwest.
-				neighbors.push([index[0] + 1, index[1] - 1]);
+				neighbors.push([index[0] - 1, index[1] - 1]);
 				// Northeast.
-				neighbors.push([index[0] - 1, index[1] - 1]);												
+				neighbors.push([index[0] + 1, index[1] - 1]);												
 			}
 		}
 		// Somewhere in the middle,
@@ -317,7 +321,7 @@ export class Minesweeper
 				// Below.
 				neighbors.push([index[0], index[1] + 1]);
 				// Southeast.
-				neighbors.push([index[0] + 1, index[0] + 1]);
+				neighbors.push([index[0] + 1, index[1] + 1]);
 				// Northeast.
 				neighbors.push([index[0] + 1, index[1] - 1])
 			}
@@ -353,7 +357,7 @@ export class Minesweeper
 				// Southwest.
 				neighbors.push([index[0] - 1, index[1] + 1]);
 				// Southeast.
-				neighbors.push([index[0] + 1, index[0] + 1]);							
+				neighbors.push([index[0] + 1, index[1] + 1]);							
 			}
 		}
 
@@ -374,6 +378,10 @@ export class Minesweeper
 		for (let i = 0; i < neighbors.length; i++)
 		{
 			let temp: [number, number] = neighbors[i];
+			if (!this.board[temp[0]][temp[1]].revealed)
+			{
+				this.board[temp[0]][temp[1]].open_square();
+			}
 		}
 	}
 
