@@ -17,11 +17,10 @@ to fix it.
 
 ### Building
 NodeJS must be installed,
-and the modules [browserify](http://browserify.org/) and [typescript](https://www.typescriptlang.org/)
+and the modules [browserify](http://browserify.org/), 
+[typescript](https://www.typescriptlang.org/),
+and [uglifyjs](https://www.npmjs.com/package/uglify-js)
 must be globally installed.
-For people familar with C++, 
-Typescript acts as the compiler, taking `*.ts` files and compiling them into pure Javascript files, 
-and Browserify acts as the linker, combining all the Javascript files into one file ready for the browser.
 
 #### Linux
 In the root of the project,
@@ -32,6 +31,7 @@ In the command prompt at the root of the project,type
 ```
 tsc
 browserify src/scripts/build/main.js src/scripts/build/Minesweeper.js src/scripts/build/Square.js -o src/scripts/bundle/bundle.js
+uglifyjs src/scripts/bundle/bundle.js -c -m -o src/scripts/bundle/bundle.min.js
 ```
 
 ---
