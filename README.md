@@ -43,3 +43,4 @@ uglifyjs src/scripts/bundle/bundle.js -c -m -o src/scripts/bundle/bundle.min.js
 * http://code.tutsplus.com/tutorials/build-a-minesweeper-game-within-200-lines-of-code--active-8578
 * http://www.dreamincode.net/forums/topic/242835-creating-a-simple-dynamic-website-with-php/
 * http://rudiv.se/Development/Resource/creating-simple-dynamic-website-and-more-with-php
+* [Javascript stopwatch](https://jsfiddle.net/pertrai1/r3su6b6n/)
