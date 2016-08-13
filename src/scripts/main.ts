@@ -1,7 +1,7 @@
 import {Minesweeper} from "./Minesweeper";
 
-let canvas = <HTMLCanvasElement>document.getElementById("gameCanvas");
-let ctx = canvas.getContext("2d");
+let canvas: HTMLCanvasElement = <HTMLCanvasElement>document.getElementById("gameCanvas");
+let box: HTMLInputElement = <HTMLInputElement>document.getElementById('remaining_mines');
 
 // Create a new game.
-let game = new Minesweeper(canvas, 30);
+let game: Minesweeper = new Minesweeper(canvas, box, 30);

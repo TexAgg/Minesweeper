@@ -12,8 +12,12 @@ export class Minesweeper
 	private board: Array< Array<Square> >;
 	// The html canvas.
 	private canvas: HTMLCanvasElement;
+	// Where the number of remaining mines is displayed.
+	private mine_box: HTMLInputElement;
 	// Number of mines.
 	private num_mines: number;
+	// The number of mines which have been marked.
+	private num_marked: number;
 	// Square side of 40 pixels.
 	private SQUARE_SIDE = 40;
 	// The number of squares on each side.
@@ -23,9 +27,10 @@ export class Minesweeper
 	 * Creates an instance of Minesweeper.
 	 * 
 	 * @param {HTMLCanvasElement} canvas
+	 * @param {HTMLInputElement} box
 	 * @param {number} num_mines
 	 */
-	constructor(canvas: HTMLCanvasElement, num_mines: number)
+	constructor(canvas: HTMLCanvasElement, box: HTMLInputElement, num_mines: number)
 	{
 		// http://stackoverflow.com/questions/23790509/proper-use-of-errors-in-typescript
 		try {
@@ -34,12 +39,16 @@ export class Minesweeper
 				throw new RangeError();
 			
 			this.canvas = canvas;
+			this.mine_box = box;
 			this.num_mines = num_mines;
+
+			this.num_marked = 0;
 
 			this.create_board();
 			this.add_listeners();
 			this.place_mines();
 			this.place_numbers();
+			this.display_remaining();
 		}
 		catch(e)
 		{
@@ -130,8 +139,22 @@ export class Minesweeper
 	{
 		let pt: [number, number] = this.get_mouse_pos(<MouseEvent>e);
 		let index = this.get_which_square(pt);
+		let before: boolean = this.board[index[0]][index[1]].marked;
 
 		this.board[index[0]][index[1]].square_marked();
+
+		let after: boolean = this.board[index[0]][index[1]].marked;
+
+		if (!before && before != after)
+		{
+			this.num_marked++;
+		}
+		else if (before && before != after)
+		{
+			this.num_marked--;
+		}
+
+		this.display_remaining();
 	}
 
 	/**
@@ -392,6 +415,17 @@ export class Minesweeper
 	 */
 	public get_remaining_mines(): number
 	{
-		return this.num_mines;
+		return this.num_mines - this.num_marked;
+	}
+
+	/**
+	 * Display the number of mines remaining
+	 * (using the number of boxes the player has marked).
+	 * 
+	 * @private
+	 */
+	private display_remaining(): void
+	{
+		this.mine_box.setAttribute('value', String(this.get_remaining_mines()));
 	}
 }
