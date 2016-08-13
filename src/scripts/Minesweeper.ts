@@ -202,7 +202,6 @@ export class Minesweeper
 						square_num++;
 				}
 				this.board[i][j].value = square_num;
-				//this.board[i][j].draw();
 			}
 		}
 	}

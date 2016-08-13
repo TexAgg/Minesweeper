@@ -133,6 +133,8 @@ export class Square
 			{
 				// Game over!
 				alert("You lose!");
+				// Refresh the page and start a new game.
+				location.reload();
 			}
 		}
 
