@@ -12,14 +12,17 @@ export class Stopwatch
     private add(): void
     {
         this.current_time++;
-        this.display.innerHTML = String(this.current_time);
+        this.display.value = String(this.current_time);
+
+        if (this.current_time == 999)
+            return;
 
         this.time();
     }
 
     public time(): void
     {
-        //let _this = this;
-        setTimeout(this.add, 1000);
+        // https://github.com/Microsoft/TypeScript/wiki/'this'-in-TypeScript
+        setTimeout(() => this.add(), 1000);
     }
 }

@@ -8,5 +8,5 @@
         <label for='remaining_mines'>Remaining mines&#58</label>
         <input type='text' id='remaining_mines' readonly></input>
     </div>
-    <script src="../scripts/bundle/bundle.js"></script>
+    <script src="../scripts/bundle/bundle.min.js"></script>
 </div>
