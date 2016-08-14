@@ -10,7 +10,7 @@
 build_dir="src/scripts/build"
 # An array of all the compiled typescript files to be compiled again into one single javascript file for the browser.
 # Make sure all of the corresponding typescript files are included in tsconfig.json.
-build_files=($build_dir/main.js $build_dir/Minesweeper.js $build_dir/Square.js)
+build_files=($build_dir/main.js $build_dir/Minesweeper.js $build_dir/Square.js $build_dir/Stopwatch.js)
 # The bundled file.
 bundle_file="src/scripts/bundle/bundle.js"
 # The uglified bundle.
