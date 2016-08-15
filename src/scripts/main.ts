@@ -18,8 +18,11 @@ let game: Minesweeper = new Minesweeper(canvas, box, 1);
 let current_time: number = 0;
 function add()
 {
-	current_time++;
-	timer_elem.value = String(current_time);
+	if (current_time < 999)
+	{
+		current_time++;
+		timer_elem.value = String(current_time);
+	}
 	if (game.is_game_won())
 		form.submit();
 	else

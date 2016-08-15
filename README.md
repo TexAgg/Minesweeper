@@ -21,7 +21,7 @@ run `build.sh`.
 In the command prompt at the root of the project,type
 ```
 tsc
-browserify src/scripts/build/main.js src/scripts/build/Minesweeper.js src/scripts/build/Square.js src/scripts/build/Stopwatch.js -o src/scripts/bundle/bundle.js
+browserify src/scripts/build/main.js src/scripts/build/Minesweeper.js src/scripts/build/Square.js -o src/scripts/bundle/bundle.js
 uglifyjs src/scripts/bundle/bundle.js -c -m -o src/scripts/bundle/bundle.min.js
 ```
 

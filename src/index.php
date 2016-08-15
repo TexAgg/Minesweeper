@@ -1,6 +1,9 @@
 <?php
+// Temporary: for debugging.
 ini_set('display_errors', 'On');
 error_reporting(E_ALL);
+
+require __DIR__ . '/../vendor/autoload.php';
 
 include("templates/header.php");
 ?>
@@ -18,13 +21,15 @@ include("templates/header.php");
             <label for='remaining_mines'>Remaining mines&#58</label>
             <input type='text' id='remaining_mines' readonly></input>
         </div>
-        <script src="/scripts/bundle/bundle.min.js"></script>
+        <script type='text/javascript' src="/scripts/bundle/bundle.min.js"></script>
     </form>
 </div>
 
 <?php
+    // Check if the game is done.
     if ($_SERVER['REQUEST_METHOD'] == 'POST')
     {
+        // If the game is done, insert the submission page.
         include('templates/submit.php');
     }
 ?>
