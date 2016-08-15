@@ -18,6 +18,8 @@ export class Minesweeper
 	private num_mines: number;
 	// The number of mines which have been marked.
 	private num_marked: number;
+	// The number of open squares.
+	private num_open: number;
 	// Square side of 40 pixels.
 	private SQUARE_SIDE = 40;
 	// The number of squares on each side.
@@ -35,7 +37,7 @@ export class Minesweeper
 		// http://stackoverflow.com/questions/23790509/proper-use-of-errors-in-typescript
 		try {
 			// We can't have more mines than squares.
-			if (num_mines > Math.pow(this.NUM_SQUARES,2))
+			if (num_mines > Math.pow(this.NUM_SQUARES, 2))
 				throw new RangeError();
 			
 			this.canvas = canvas;
@@ -126,6 +128,7 @@ export class Minesweeper
 		this.board[index[0]][index[1]].square_clicked();
 		if (this.board[index[0]][index[1]].value == 0)
 		{
+			this.num_open++;
 			this.open_neighbors(index);
 		}
 	}
@@ -403,6 +406,7 @@ export class Minesweeper
 			if (!this.board[temp[0]][temp[1]].revealed)
 			{
 				this.board[temp[0]][temp[1]].open_square();
+				this.num_open++;
 			}
 		}
 	}
@@ -426,5 +430,15 @@ export class Minesweeper
 	private display_remaining(): void
 	{
 		this.mine_box.setAttribute('value', String(this.get_remaining_mines()));
+	}
+
+	public is_game_won(): boolean
+	{
+		let squares_remaining: number = Math.pow(this.NUM_SQUARES, 2) - this.num_open;
+		
+		if (this.num_marked == squares_remaining)
+			return true;
+		else
+			return false;
 	}
 }

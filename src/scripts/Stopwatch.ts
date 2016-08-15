@@ -11,14 +11,15 @@ export class Stopwatch
     public current_time: number;
 
     // The element which will display the time.
-    private display: HTMLElement;
+    private display: HTMLInputElement;
+    private timeout_id: number;
 
     /**
      * Creates an instance of Stopwatch.
      * 
      * @param {HTMLElement} display
      */
-    constructor(display: HTMLElement)
+    constructor(display: HTMLInputElement)
     {
         this.current_time = 0;
         this.display = display;
@@ -50,6 +51,14 @@ export class Stopwatch
     public time(): void
     {
         // https://github.com/Microsoft/TypeScript/wiki/'this'-in-TypeScript
-        setTimeout(() => this.add(), 1000);
+        this.timeout_id = setTimeout(() => this.add(), 1000);
+    }
+
+    /**
+     * Pause the Stopwatch.
+     */
+    public stop(): void
+    {
+        clearTimeout(this.timeout_id);
     }
 }
