@@ -7,7 +7,8 @@ I decided to recreate one of my favorite games.
 ## Instructions
 
 ### Setup
-This is to help me set up the local server on Ubuntu.
+This is to help me set up the local server on Ubuntu,
+although I should have done [this](http://php.net/manual/en/features.commandline.webserver.php).
 
 1. Go to `/etc/apache2/apache2.conf` and change the root directory
 to `<this_path>/src`.

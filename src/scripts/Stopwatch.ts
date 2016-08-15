@@ -7,8 +7,10 @@
  */
 export class Stopwatch
 {
+    // The current time.
     public current_time: number;
 
+    // The element which will display the time.
     private display: HTMLElement;
 
     /**
@@ -23,7 +25,8 @@ export class Stopwatch
     }
 
     /**
-     * Add 1 to the current_time.
+     * Add 1 to the current_time,
+     * until current_time is 999.
      * 
      * @private
      * @returns {void}
@@ -33,6 +36,7 @@ export class Stopwatch
         this.current_time++;
         this.display.value = String(this.current_time);
 
+        // Stop at 999 seconds.
         if (this.current_time == 999)
             return;
 
