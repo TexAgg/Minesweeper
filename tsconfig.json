@@ -7,7 +7,6 @@
     "files": [
 			"src/scripts/main.ts",
 			"src/scripts/Minesweeper.ts",
-			"src/scripts/Square.ts",
-			"src/scripts/Stopwatch.ts"
+			"src/scripts/Square.ts"
     ]
 }

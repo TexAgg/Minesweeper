@@ -126,7 +126,6 @@ export class Minesweeper
 		this.board[index[0]][index[1]].square_clicked();
 		if (this.board[index[0]][index[1]].value == 0)
 		{
-			this.num_open++;
 			this.open_neighbors(index);
 		}
 	}
