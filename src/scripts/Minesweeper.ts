@@ -18,8 +18,6 @@ export class Minesweeper
 	private num_mines: number;
 	// The number of mines which have been marked.
 	private num_marked: number;
-	// The number of open squares.
-	private num_open: number;
 	// Square side of 40 pixels.
 	private SQUARE_SIDE = 40;
 	// The number of squares on each side.
@@ -403,10 +401,9 @@ export class Minesweeper
 		for (let i = 0; i < neighbors.length; i++)
 		{
 			let temp: [number, number] = neighbors[i];
-			if (!this.board[temp[0]][temp[1]].revealed)
+			if (!this.board[temp[0]][temp[1]].revealed && !this.board[temp[0]][temp[1]].marked)
 			{
 				this.board[temp[0]][temp[1]].open_square();
-				this.num_open++;
 			}
 		}
 	}
@@ -434,11 +431,21 @@ export class Minesweeper
 
 	public is_game_won(): boolean
 	{
-		let squares_remaining: number = Math.pow(this.NUM_SQUARES, 2) - this.num_open;
-		
-		if (this.num_marked == squares_remaining)
-			return true;
-		else
+		if (this.num_marked != this.num_mines)
 			return false;
+		else
+		{
+			for (let i = 0; i < this.NUM_SQUARES; i++)
+			{
+				for (let j = 0; j < this.NUM_SQUARES; j++)
+				{
+					if (this.board[i][j].marked && !this.board[i][j].state)
+					{
+						return false;
+					}
+				}
+			}
+			return true;
+		}
 	}
 }

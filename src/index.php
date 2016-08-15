@@ -1,26 +1,34 @@
 <?php
+ini_set('display_errors', 'On');
+error_reporting(E_ALL);
+
 include("templates/header.php");
+?>
 
-// http://rudiv.se/Development/Resource/creating-simple-dynamic-website-and-more-with-php
-// Set the default name. 
-$action = 'game'; 
-// Specify some disallowed paths.
-$disallowed_paths = array('header', 'footer');
+<div>
+    <form id='game_form' action='' method='POST'>
+        <div>
+            <input type='text' id='timer' name='time'></input>
+        </div>
+        <div>
+            <canvas id="gameCanvas" width="600" height="600"></canvas>
+        </div>
+        <div>
+            <!-- https://www.obkb.com/dcljr/charstxt.html -->
+            <label for='remaining_mines'>Remaining mines&#58</label>
+            <input type='text' id='remaining_mines' readonly></input>
+        </div>
+        <script src="/scripts/bundle/bundle.min.js"></script>
+    </form>
+</div>
 
-if (!empty($_GET['action'])) 
-{ 
-    // Get the current action variable.
-    $tmp_action = basename($_GET['action']);
+<?php
+    if ($_SERVER['REQUEST_METHOD'] == 'POST')
+    {
+        include('templates/submit.php');
+    }
+?>
 
-    // If it's not a disallowed path, and if the file exists, update $action.
-    if (!in_array($tmp_action, $disallowed_paths) && file_exists("templates/{$tmp_action}.php")) 
-        $action = $tmp_action;
-
-    // Else, go to default action (game).
-} 
-
-// Include $action 
-include("templates/$action.php"); 
-
+<?php
 include("templates/footer.php");
 ?>
