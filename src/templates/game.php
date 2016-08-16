@@ -1,5 +1,5 @@
 <div>
-    <form id='game_form' action='submit.php' method='POST'>
+    <form id='game_form' action='' method='POST'>
         <div>
             <input type='text' id='timer' name='time'></input>
         </div>
@@ -11,6 +11,6 @@
             <label for='remaining_mines'>Remaining mines&#58</label>
             <input type='text' id='remaining_mines' readonly></input>
         </div>
-        <script src="../scripts/bundle/bundle.min.js"></script>
+        <script type='text/javascript' src="/scripts/bundle/bundle.min.js"></script>
     </form>
 </div>

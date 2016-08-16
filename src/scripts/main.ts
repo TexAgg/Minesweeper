@@ -8,12 +8,12 @@ let box: HTMLInputElement = <HTMLInputElement>document.getElementById('remaining
 let timer_elem: HTMLInputElement = <HTMLInputElement>document.getElementById('timer');
 
 // Create a new game.
-let game: Minesweeper = new Minesweeper(canvas, box, 1);
+let game: Minesweeper = new Minesweeper(canvas, box, 30);
 
 /*
 	Start the stopwatch.
 	Every second, check if the game is won.
-	Submit the form if it has.
+	Submit the form if it is.
 */
 let current_time: number = 0;
 function add()

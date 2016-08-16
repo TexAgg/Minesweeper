@@ -403,6 +403,8 @@ export class Minesweeper
 			if (!this.board[temp[0]][temp[1]].revealed && !this.board[temp[0]][temp[1]].marked)
 			{
 				this.board[temp[0]][temp[1]].open_square();
+				// We need to open all surrounding 0s, not just in a square.
+				//this.open_neighbors(temp);
 			}
 		}
 	}

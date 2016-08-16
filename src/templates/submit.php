@@ -1,3 +1,7 @@
+<?php
+require_once __DIR__ . '/../../vendor/autoload.php';
+?>
+
 <div>
 	<div>
 		<h2>Congratulations!</h2>
@@ -9,3 +13,7 @@
 		</p>
 	</div>
 </div>
+
+<?
+$_POST = array();
+?>
