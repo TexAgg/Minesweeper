@@ -38,6 +38,7 @@ else if (isset($_SESSION['time']))
     session_destroy();
 }
 
+// Include the scores.
 include('templates/scores.php');
 
 include("templates/footer.php");

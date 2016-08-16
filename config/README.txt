@@ -1,0 +1,1 @@
+Configuration files (i.e. passwords, secrets) are stored in this directory.

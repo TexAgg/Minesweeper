@@ -1,11 +1,14 @@
 <?php
+/**
+* Get the high scores and display them.
+*/
+
 require_once __DIR__ . '/../../vendor/autoload.php';
 
 //phpinfo();
 //echo $_SERVER['SERVER_NAME'];
 
 $params = App\Utils::get_db_params();
-
 $db = new App\Firebase($params->url, $params->secret);
 
 $scores = $db->get_data('scores');
