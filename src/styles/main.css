@@ -11,3 +11,8 @@ footer
     padding-top: 50px;
     color: #ccc;
 }
+
+table, th, td 
+{
+    border: 1px solid black;
+}

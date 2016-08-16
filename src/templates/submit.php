@@ -1,4 +1,10 @@
 <?php
+/**
+* The score is displayed here and,
+* if it is high enough, 
+* saved as a high-score.
+*/
+
 require_once __DIR__ . '/../../vendor/autoload.php';
 ?>
 
@@ -7,13 +13,9 @@ require_once __DIR__ . '/../../vendor/autoload.php';
 		<h2>Congratulations!</h2>
 		<p>
 		<?php 
-		$time = $_POST['time'];
+		$time = $_SESSION['time'];
 		echo $time . ' seconds!';
 		?>
 		</p>
 	</div>
 </div>
-
-<?
-$_POST = array();
-?>

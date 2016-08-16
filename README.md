@@ -42,6 +42,5 @@ to fix it.
 ## Resources
 * [Typescript project example](https://www.dropbox.com/sh/2mzt7a7ufqbbgrj/AAAUsgkDVD8Bwp_Yoeq0Uo97a?dl=0)
 * [Actionscript example](http://code.tutsplus.com/tutorials/build-a-minesweeper-game-within-200-lines-of-code--active-8578)
-* http://www.dreamincode.net/forums/topic/242835-creating-a-simple-dynamic-website-with-php/
-* http://rudiv.se/Development/Resource/creating-simple-dynamic-website-and-more-with-php
 * [Javascript stopwatch](https://jsfiddle.net/pertrai1/r3su6b6n/)
+* [Post-Redirect-Get](http://wordsideasandthings.blogspot.ca/2013/04/post-redirect-get-pattern-in-php.html)

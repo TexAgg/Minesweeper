@@ -39,7 +39,7 @@ class Firebase
 	* @param string $path The path to read data from.
 	* @return object A php object containing a JSON response.
 	*/
-	public function getData($path)
+	public function get_data($path)
 	{
 
 		$url = $this->baseUrl . $path . ".json?auth=" . $this->secret; 

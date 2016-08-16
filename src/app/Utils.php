@@ -9,7 +9,7 @@ class Utils
 		$filename = '/../../config/config.xml';
 		$xml = \simplexml_load_file(__DIR__ . $filename);
 
-		return $xml->db;
+		return $xml;
 	}
 }
 
