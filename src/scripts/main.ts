@@ -14,6 +14,9 @@ let game: Minesweeper = new Minesweeper(canvas, box, 30);
 	Start the stopwatch.
 	Every second, check if the game is won.
 	Submit the form if it is.
+
+	I wish this were implemented in a cleaner,
+	more organized OOP way.
 */
 let current_time: number = 0;
 function add()

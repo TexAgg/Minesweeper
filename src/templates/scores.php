@@ -5,13 +5,13 @@
 
 require_once __DIR__ . '/../../vendor/autoload.php';
 
-//phpinfo();
-//echo $_SERVER['SERVER_NAME'];
-
 $params = App\Utils::get_db_params();
 $db = new App\Firebase($params->url, $params->secret);
 
 $scores = $db->get_data('scores');
+// Sort from lowest to highest.
+usort($scores, 'App\Utils::score_compare');
+//var_dump($scores);
 ?>
 
 <div>

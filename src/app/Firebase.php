@@ -32,7 +32,7 @@ class Firebase
 	}
 
 	/**
-	* Get JSON data from Firebase.
+	* GET JSON data from Firebase.
 	* See the Firebase documentation here:
 	* https://firebase.google.com/docs/reference/rest/database/#section-get
 	*
@@ -45,13 +45,30 @@ class Firebase
 		$url = $this->baseUrl . $path . ".json?auth=" . $this->secret; 
 		//var_dump($url);
 
-		$response = \Httpful\Request::get($url)
+		$response = Request::get($url)
 			->expectsJson()
 			->send();
 
 		//var_dump($response);
 		return $response->body;
 
+	}
+
+	/**
+	* PUT JSON data to a Firebase path.
+	*
+	* @param string $path The path to PUT the data to.
+	* @param string $json A json_encoded object to put.
+	*/
+	public function put_data($path, $json)
+	{
+		$url = $this->baseUrl . $path . ".json?auth=" . $this->secret;
+
+		$response = Request::put($url)
+			->sendsJson()
+			->body($json)
+			->send();
+		var_dump($response);	
 	}
 
 }
