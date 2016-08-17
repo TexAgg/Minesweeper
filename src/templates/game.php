@@ -1,6 +1,6 @@
-<div>
+<div id='game-wrapper'>
     <form id='game_form' action='' method='POST'>
-        <div>
+        <div id='timer-wrapper'>
             <input type='text' id='timer' name='time'></input>
         </div>
         <div>

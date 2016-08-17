@@ -14,7 +14,7 @@ usort($scores, 'App\Utils::score_compare');
 //var_dump($scores);
 ?>
 
-<div>
+<div id='scores-wrapper'>
 	<h3>High Scores</h3>
 	<table>
 		<tr>

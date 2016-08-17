@@ -8,7 +8,7 @@
 require_once __DIR__ . '/../../vendor/autoload.php';
 ?>
 
-<div>
+<div id='submit-wrapper'>
 	<div>
 		<h2>Congratulations!</h2>
 		<p>

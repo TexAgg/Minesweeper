@@ -11,3 +11,4 @@
 <header>
     <h1>Minesweeper</h1>
 </header>
+<div id='wrapper'>
