@@ -18,6 +18,7 @@ usort($scores, 'App\Utils::score_compare');
 	<h3>High Scores</h3>
 	<table>
 		<tr>
+			<th>Rank</th>
 			<th>Name</th>
 			<th>Score</th>
 		</tr>
@@ -26,6 +27,7 @@ usort($scores, 'App\Utils::score_compare');
 		{
 			echo '<tr>';
 
+			echo '<td>' . ($i+1) . '</td>';
 			echo '<td>' . $scores[$i]->name . '</td>';
 			echo '<td>' . $scores[$i]->score . '</td>';
 
