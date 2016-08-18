@@ -19,16 +19,17 @@ include('templates/game.php');
     and read the $_SESSION variable, destroying it once you are done.
     The PRG pattern prevents form resubmission once the page is refreshed.
 */
-if (isset($_POST['time']))
+if (count($_POST) > 0)
 {
     // Store the $_POST variable as a $_SESSION variable.
     $_SESSION['time'] = $_POST['time'];
+    $_SESSION['name'] = $_POST['name'];
 
     // Redirect the page.
     header("HTTP/1.1 303 See Other");
     header('Location:index.php');
 }
-else if (isset($_SESSION['time']))
+else if (count($_SESSION) > 0)
 {    
     // Display the score.
     include('templates/submit.php');

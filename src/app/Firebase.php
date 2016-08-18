@@ -59,6 +59,7 @@ class Firebase
 	*
 	* @param string $path The path to PUT the data to.
 	* @param string $json A json_encoded object to put.
+	* @return Httpful\Response The HTTP response.
 	*/
 	public function put_data($path, $json)
 	{
@@ -68,7 +69,8 @@ class Firebase
 			->sendsJson()
 			->body($json)
 			->send();
-		var_dump($response);	
+		//var_dump($response);
+		return $response;	
 	}
 
 }

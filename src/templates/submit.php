@@ -10,7 +10,10 @@ require_once __DIR__ . '/../../vendor/autoload.php';
 
 <div id='submit-wrapper'>
 	<div>
-		<h2>Congratulations!</h2>
+		<?php
+		$name = $_SESSION['name'];
+		echo "<h2>Congratulations, " . $name . "!</h2";
+		?>
 		<p>
 		<?php 
 		$time = $_SESSION['time'];
@@ -35,7 +38,7 @@ $scores = $db->get_data('scores');
 $new_score = new stdClass();
 $new_score->score = $time;
 // Get the actual name with a form.
-$new_score->name = 'na';
+$new_score->name = $name;
 
 array_push($scores, $new_score);
 App\Utils::trim_scores($scores);
