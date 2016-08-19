@@ -8,7 +8,7 @@
         </div>
         <div>
             <!-- https://www.obkb.com/dcljr/charstxt.html -->
-            <label for='remaining_mines'>Remaining mines&#58</label>
+            <label for='remaining_mines'>Remaining mines&#58;</label>
             <input type='text' id='remaining_mines' readonly></input>
         </div>
         <script type='text/javascript' src="/scripts/bundle/bundle.min.js"></script>

@@ -37,6 +37,9 @@ or [here](http://askubuntu.com/questions/451922/apache-access-denied-because-sea
 to fix it.
 4. Restart the server with `sudo service apache2 restart`.
 
+### Deployment
+[`gcloud app deploy`](https://cloud.google.com/sdk/gcloud/reference/app/deploy)
+
 ---
 
 ## Resources
