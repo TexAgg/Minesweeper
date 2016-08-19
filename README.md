@@ -18,12 +18,8 @@ In the root of the project,
 run `build.sh`.
 
 #### Other OS
-In the command prompt at the root of the project,type
-```
-tsc
-browserify src/scripts/build/main.js src/scripts/build/Minesweeper.js src/scripts/build/Square.js -o src/scripts/bundle/bundle.js
-uglifyjs src/scripts/bundle/bundle.js -c -m -o src/scripts/bundle/bundle.min.js
-```
+In the command prompt at the root of the project,
+run `python build.py`.
 
 ### Setup
 This is to help me set up the local server on Ubuntu,
